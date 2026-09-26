@@ -43,7 +43,7 @@ def severity(device, energyConsumption):
 
     elif energyConsumption > maximum * 1.5:
         return "Critical"
-    
+        
 def attention(device, energyConsumption):
     status = severity(device,energyConsumption)
     if status == "High" or status == "Critical":
@@ -59,7 +59,7 @@ def cost(energyConsumption, rate):
     else:
         return energyConsumption * rate
 
-"""task 3: cost"""
+"""task 3: feedback"""
 def feedback(device,energyConsumption):
     status = severity(device,energyConsumption)
     
@@ -69,3 +69,15 @@ def feedback(device,energyConsumption):
         return "Check the operating duration and temperature settings"
     elif status == "Critical":
         return "CRITICAL: Excessive consumption! Inspect device immediately for faults or disconnect."
+    
+def highestCons(device): #EXTRA FUNCTION FROM DANA
+    if device == 1:
+        return "LED Light"
+    elif device == 2:
+        return "Television"
+    elif device == 3:
+        return "Refrigerator"
+    elif device == 4:
+        return "Washing Machine"
+    elif device == 5:
+        return "Air Conditioner"
