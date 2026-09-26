@@ -1,0 +1,37 @@
+Lower normal limit
+Input: Device 1, 0.01 kWh
+Expected behavior: The reading should be classified as Normal.
+Actual result: The program correctly returned Normal.
+
+Upper normal limit
+Input: Device 1, 0.10 kWh
+Expected behavior: The reading should be classified as Normal.
+Actual result: The program correctly returned Normal.
+
+Slightly above the normal range
+Input: Device 1, 0.11 kWh
+Expected behavior: The reading should be classified as High and require attention.
+Actual result: The program correctly returned High.
+
+Significantly above the normal range
+Input: Device 1, 0.20 kWh
+Expected behavior: The reading should be classified as Critical and require attention.
+Actual result: The program correctly returned Critical.
+
+Zero energy consumption
+Input: Device 1, 0 kWh
+Expected behavior: The program should handle the value without crashing.
+Actual result: The value was accepted, but it showed that values below the minimum normal range need special handling.
+
+Negative energy consumption
+Input: Device 1, -1 kWh
+Expected behavior: The value should be rejected as invalid input.
+Actual result: At first, the program caused an error because the cost function returned None. The program was then updated to reject negative values before doing calculations.
+
+Unknown device
+Input: Device 6
+Expected behavior: The program should display an error message and ask the user to select a valid device again.
+Actual result: At first, the program still asked for energy consumption. A continue statement was added so the program now goes back to device selection.
+
+
+The tests i did for this task helped us verify working components, catch bugs, and make sure that nothing is misplaced. A big example of this would be when entering a negative value when prompted to enter the energy consumption, it crashed the program, as it was not made to handle or process negative values, so changing the code accordingly, instead of the program breaking, it returns as invalid value and continues as normal.
