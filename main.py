@@ -23,9 +23,16 @@ def main():
         """all of the below is task 5"""
         
         device = int(input("Choose your device (1, 2, 3, 4, 5): "))
-        sumDevices +=1
+
+        if device < 1 or device > 5:
+            print("Please select a valid device.")
+            continue
         
         energyConsumption = float(input("Please enter your energy consumption in kWh: "))
+        if energyConsumption < 0:
+            print("Please enter valid values.")
+            continue
+        sumDevices +=1
         totalEnergy += energyConsumption
         
         if energyConsumption > highCons:
@@ -46,7 +53,8 @@ def main():
             sumAttention +=1
             
         cost = danaOneThree.cost(energyConsumption, rate)
-        totalCost += cost
+        if cost is not None:
+            totalCost += cost
         feedback = danaOneThree.feedback(device,energyConsumption)
         
     """task 6: report"""
