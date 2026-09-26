@@ -1,0 +1,13 @@
+Task 1 - Pretty easy icl just functions with if statements, storing the ranges of electricity use might require dictionaries
+Task 2 - Very easy, function with basic arithmatic
+Task 3 - Easy, no idea what it means by "check operating time and temp settings" though.
+Task 4 - Slighty challenging, requires loops and the usage of all previous functions in task 1-3
+Task 5 - Make a function that returns the number of entries, pretty easy
+Task 6 - js display whatever the task 5 funtion returns
+Task 7 - Make sure the function processes edge cases? not sure what this task is about
+Task 8 - pytest testing previous funtions, easy shi 
+Task 9 - Design report, yap about how we made the program
+
+
+git config --global user.email "ihavefriend01@gmail.com"
+git config --global user.name "Ihavefriend"
