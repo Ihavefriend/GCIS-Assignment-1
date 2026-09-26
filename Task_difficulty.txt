@@ -7,7 +7,3 @@ Task 6 - js display whatever the task 5 funtion returns
 Task 7 - Make sure the function processes edge cases? not sure what this task is about
 Task 8 - pytest testing previous funtions, easy shi 
 Task 9 - Design report, yap about how we made the program
-
-
-git config --global user.email "ihavefriend01@gmail.com"
-git config --global user.name "Ihavefriend"
