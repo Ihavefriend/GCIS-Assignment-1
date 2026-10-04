@@ -12,7 +12,7 @@ def test_normal_reading():
 
 def test_boundary_limit_reading():
     expected = "Normal"
-    actual = getSeverity(1, 0.08)
+    actual = getSeverity(1, 0.1)
     assert expected == actual
 
 def test_low_reading():
@@ -21,13 +21,13 @@ def test_low_reading():
     assert expected == actual
 def test_high_reading():
     expected = "High"
-    actual = getSeverity(2, 0.6)
+    actual = getSeverity(2, 0.51)
     assert expected == actual
 
 
 def test_critical_reading():
     expected = "Critical"
-    actual = getSeverity(3, 2.6)
+    actual = getSeverity(3, 2.26)
     assert expected == actual
 
 
