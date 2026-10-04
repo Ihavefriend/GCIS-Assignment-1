@@ -45,9 +45,9 @@ def getSeverity(device, energyConsumption):
 def getAttention(device, energyConsumption):
     status = getSeverity(device,energyConsumption)
     if status == "High" or status == "Critical":
-        return 1
+        return True # Changed from 1 and 0
     else:
-        return 0
+        return False
     
 """task 2: cost"""
 def getCost(energyConsumption, rate):
@@ -61,11 +61,11 @@ def getCost(energyConsumption, rate):
 def getFeedback(device,energyConsumption):
     status = getSeverity(device,energyConsumption)
     if status == "Low":
-        return "Operating below recommended range"
+        return "LOW: Operating below recommended range"
     elif status == "Normal":
-        return "Operating efficiently within the normal range."
+        return "NORMAL: Operating efficiently within the normal range."
     elif status == "High":
-        return "Check the operating duration and temperature settings"
+        return "HIGH: Check the operating duration and temperature settings"
     elif status == "Critical":
         return "CRITICAL: Excessive consumption! Inspect device immediately for faults or disconnect."
     
@@ -85,6 +85,7 @@ def highestCons(device): #EXTRA FUNCTION FROM DANA
 def main():
         
     sumDevices = 0
+    sumLow = 0
     sumNormal = 0
     sumHigh = 0
     sumCritical = 0
@@ -96,9 +97,9 @@ def main():
     rate = 0.3 # AED / kWh, constant
     
     print("1- LED Light\n2- Television\n3- Refrigerator\n4- Washing Machine\n5- Air Conditioner")
-
+    deviceNumber = int(input("Enter the number of devices to check: ")) # Ask the user for no. of devices rather than hard coding (better for testing)
     """task 4"""
-    while sumDevices<2:  # Set at 2 for testing
+    while sumDevices<deviceNumber:
         
         """all of the below is task 5"""
         
@@ -120,8 +121,9 @@ def main():
             highConsDevice = highestCons(device)
 
         severity = getSeverity(device, energyConsumption)
-        
-        if severity == "Normal":
+        if severity == "Low":
+            sumLow +=1
+        elif severity == "Normal":
             sumNormal +=1
         elif severity == "High":
             sumHigh +=1
@@ -142,7 +144,8 @@ def main():
     
     print("\n========== HomeSense Report ==========")
     print("Readings analyzed:", sumDevices)
-    print("\nNormal:", sumNormal)
+    print("\nLow:", sumLow)
+    print("Normal:", sumNormal)
     print("High:", sumHigh)
     print("Critical:", sumCritical)
     print("\nReadings requiring attention:", sumAttention)

@@ -31,7 +31,10 @@ def test_attention_decision():
 """def test_invalid_unusual_input():     # This check is occuring inside the loop
     assert getSeverity(1, -0.05) == "Invalid powerDraw" """
 
+def test_smart_feedback_high():
+    feedback = getFeedback(2,0.7)
+    assert "HIGH" in feedback
 
-def test_smart_feedback():
+def test_smart_feedback_critical():
     feedback = getFeedback(5, 15)
     assert "CRITICAL" in feedback
