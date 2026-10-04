@@ -5,36 +5,52 @@ from Assignment_1 import *
 
 
 def test_normal_reading():
-    assert getSeverity(1, 0.05) == "Normal"
+    expected = "Normal"
+    actual = getSeverity(1, 0.05)
+    assert expected == actual 
 
 
 def test_boundary_limit_reading():
-    assert getSeverity(1, 0.08) == "Normal"
+    expected = "Normal"
+    actual = getSeverity(1, 0.08)
+    assert expected == actual
 
-
+def test_low_reading():
+    expected = "Low"
+    actual = getSeverity(1,0.00001)
+    assert expected == actual
 def test_high_reading():
-    assert getSeverity(2, 0.6) == "High"
+    expected = "High"
+    actual = getSeverity(2, 0.6)
+    assert expected == actual
 
 
 def test_critical_reading():
-    assert getSeverity(3, 2.6) == "Critical"
+    expected = "Critical"
+    actual = getSeverity(3, 2.6)
+    assert expected == actual
 
 
 def test_energy_cost_calculation():
-    assert getCost(4.0, 0.30) == 1.20
+    expected = 1.20
+    actual = getCost(4.0, 0.30)
+    assert expected == actual
 
 
 def test_attention_decision():
-    assert getAttention(4, 10) 
+    expected = True
+    actual = getAttention(4, 10)
+    assert expected == actual
 
-
-"""def test_invalid_unusual_input():     # This check is occuring inside the loop
-    assert getSeverity(1, -0.05) == "Invalid powerDraw" """
 
 def test_smart_feedback_high():
-    feedback = getFeedback(2,0.7)
-    assert "HIGH" in feedback
+    expected = True
+    actual = "HIGH" in getFeedback(2, 0.7)
+    assert expected == actual
+
 
 def test_smart_feedback_critical():
-    feedback = getFeedback(5, 15)
-    assert "CRITICAL" in feedback
+    expected = True
+    actual = "CRITICAL" in getFeedback(5, 15)
+    assert expected == actual
+
