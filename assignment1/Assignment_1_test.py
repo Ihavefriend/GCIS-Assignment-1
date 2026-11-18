@@ -1,7 +1,7 @@
 import pytest
 
 
-from Assignment_1 import * 
+from assignment1.Assignment_1 import * 
 
 
 def test_normal_reading():

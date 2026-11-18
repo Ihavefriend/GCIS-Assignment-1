@@ -1,6 +1,6 @@
 """this is a main.py for testing"""
 
-import unused.danaOneThree as danaOneThree
+import assignment1.unused.danaOneThree as danaOneThree
 
 def main():
         

@@ -27,7 +27,7 @@ def getSeverity(device, energyConsumption):
 
     normalRange = operatingRange(device)
 
-    if normalRange == None:
+    if normalRange == None: #invalid device
         return
 
     minimum, maximum = normalRange
