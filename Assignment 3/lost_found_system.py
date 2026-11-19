@@ -21,3 +21,20 @@ class LostFoundSystem:
     def display_items(self):
         for item in self.LostItemList:
             print(item)
+
+    def save_items(self,filename):
+        file = open(filename,"w")
+        for item in self.LostItemList:
+            file.write(str(item),"\n")
+        file.close()
+    def load_items(self,filename):
+        try:
+            file = open(filename)
+        except:
+            print("Something has gone wrong...")
+            return 0
+        self.LostItemList = []
+        for strItem in file.readlines(): # {self.__ID}, {self.__name}, {self.__category},{self.__location},{self.__status}
+            lItem = strItem.strip().split(",")
+            self.add_item(LostItem(lItem[0],lItem[1],lItem[2],lItem[3]))
+            
