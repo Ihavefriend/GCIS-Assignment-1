@@ -1,0 +1,28 @@
+Case Statement to investigate 
+1. Identity Mystery Two LostItem objects with the same ID but different 
+names should be considered different items. 
+
+initial opinion:
+ai's opinion:
+pytest result:
+final conc:
+
+2. Double Claim Claiming an already claimed item should return True 
+because its status is Claimed. 
+
+initial opinion:
+ai's opinion:
+pytest result:
+final conc:
+
+3. Disappearing Records Loading the same file twice should double the number 
+of saved records. 
+
+initial opinion:
+ai's opinion:
+pytest result:
+final conc:
+ 
+Submit one compact investigation table with: Case | Your Initial Opinion | AI Opinion | Pytest Result | 
+Final Conclusion. An extra proven AI mistake may strengthen your investigation within the allocated 
+marks

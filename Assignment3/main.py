@@ -28,3 +28,6 @@ def main():
             pass
         elif userInput == 7:
             break
+    
+if __name__ == "__main__":
+    main()

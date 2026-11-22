@@ -1,15 +1,19 @@
 class LostItem:
+    
     __slots__ = ["__ID","__name","__category","__location","__status"]
+    
     def __init__(self, ID, name, category, location):
         if ID<=0:
             raise ValueError("Enter a valid ID")
-        if not(name.strip() and category.strip() and location.strip()):
-            raise ValueError("Do not keep name,. category or location empty")
+        
+        if not(name.strip() and category.strip() and location.strip()): #if this are unable to be stripped because theyre empty,
+            raise ValueError("Do not keep name, category, or location empty")
+        
         self.__ID = ID
         self.__name = name
         self.__category = category
         self.__location = location
-        self.__status = "Lost"
+        self.__status = "Lost" #lost by default as per assignment
 
     def get_ID(self):
         return self.__ID
@@ -27,7 +31,7 @@ class LostItem:
         return self.__status
     
     def __str__(self):
-        return f"{self.__ID} {self.__name} {self.__category} {self.__location} {self.__status}"
+        return "ID is: " + self.__ID + "\nName is: " + self.__name +"\nCategory is: " +self.__category+"\nLocation is: "+self.__location + "\nStatus is: " + self.__status
     
     def __eq__(self,other):
         if type(self) == type(other):
