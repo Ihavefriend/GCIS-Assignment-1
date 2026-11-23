@@ -6,25 +6,17 @@ print("Dana's TESTS")
 def test_danaInvalidID():
     # setup
     itemID = 0
-    expected = False
 
-    # invoke
-    actual = LostItem(itemID, "Laptop", "Electronics", "Library")
-
-    # analyze
-    assert actual == expected
+    with pytest.raises(ValueError):
+        LostItem(itemID, "Laptop", "Electronics", "Library")
 
 
 def test_danaEmptyString():
     # setup
     name = "   "
-    expected = False
 
-    # invoke
-    actual = LostItem(101, name, "Electronics", "Library")
-
-    # analyze
-    assert actual == expected
+    with pytest.raises(ValueError):
+        LostItem(101, name, "Electronics", "Library")
 
 
 def test_danaSameID():
@@ -43,13 +35,10 @@ def test_danaSameID():
 def test_danaNegID():
     # setup
     ID = -50
-    expected = False
 
-    # invoke
-    actual = LostItem(ID, "Calculator", "Electronics", "Room 204")
 
-    # analyze
-    assert actual == expected
+    with pytest.raises(ValueError):
+        LostItem(ID, "Calculator", "Electronics", "Room 204")
 
 
 print("AI's TESTS")
@@ -58,13 +47,9 @@ print("AI's TESTS")
 def test_aiStringID():
     # setup
     ID = "101"
-    expected = False
 
-    # invoke
-    actual = LostItem(ID, "Laptop", "Electronics", "Library")
-
-    # analyze
-    assert actual == expected
+    with pytest.raises(ValueError):
+        LostItem(ID, "Laptop", "Electronics", "Library")
 
 
 def test_aiEmptyCategory():
@@ -72,11 +57,8 @@ def test_aiEmptyCategory():
     category = ""
     expected = False
 
-    # invoke
-    actual = LostItem(102, "Laptop", category, "Library")
-
-    # analyze
-    assert actual == expected
+    with pytest.raises(ValueError):
+        LostItem(102, "Laptop", category, "Library")
 
 
 def test_aiDifferentID():
@@ -95,21 +77,12 @@ def test_aiDifferentID():
 def test_aiFloatID():
     # setup
     ID = 101.5
-    expected = False
 
-    # invoke
-    actual = LostItem(ID, "Laptop", "Electronics", "Library")
-
-    # analyze
-    assert actual == expected
+    with pytest.raises(ValueError):
+        LostItem(ID, "Laptop", "Electronics", "Library")
     
 def test_aiEmptyLocation():
     # setup
     location = ""
-    expected = False
-
-    # invoke
-    actual = LostItem(103, "Calculator", "Electronics", location)
-
-    # analyze
-    assert actual == expected
+    with pytest.raises(ValueError):
+        LostItem(103, "Calculator", "Electronics", location)

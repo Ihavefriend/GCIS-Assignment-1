@@ -3,7 +3,7 @@ class LostItem:
     __slots__ = ["__ID","__name","__category","__location","__status"]
     
     def __init__(self, ID, name, category, location):
-        if ID<=0:
+        if not(type(ID) == int) or ID<=0:
             raise ValueError("Enter a valid ID")
         
         if not(name.strip() and category.strip() and location.strip()): #if this are unable to be stripped because theyre empty,
