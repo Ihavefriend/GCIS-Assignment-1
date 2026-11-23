@@ -1,0 +1,9 @@
+Recommendation 1 : Fix LostItem.__str__ and LostItem.__eq__
+AI review: In lost_item.py, __str__ tries to add self.__ID directly to a string, which crashes with a TypeError when ID is an integer like 101. 
+Also, __eq__ returns None instead of False if other isn't a LostItem.
+My call:(accept)Both are real bugs in special methods required for LostItem, and fixing them keeps the code straightforward and within what we've covered in class.
+
+Recommendation 2:
+Make the item list private and return True in add_item (reject)
+AI review: LostFoundSystem leaves LostItemList public, puts __slots__ in a set ({"LostItemList"}), and doesn't return True when an item is actually added in add_item()
+My call: Reject. Suggesting heavy design patterns like separate repository classes or custom exception structures goes beyond what is needed for this assignment and outside the course scope. Keeping LostFoundSystem self-contained and straightforward is cleaner and fits the requirements.
