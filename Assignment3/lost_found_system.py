@@ -11,6 +11,7 @@ class LostFoundSystem:
         if Item in self.LostItemList:
             return False
         self.LostItemList.append(Item)
+        return True
         
     def search_item(self, item_id):
         for item in self.LostItemList:
@@ -43,5 +44,5 @@ class LostFoundSystem:
         self.LostItemList = []
         for strItem in file.readlines(): # {self.__ID}, {self.__name}, {self.__category},{self.__location},{self.__status}
             lItem = strItem.strip().split(",")
-            self.add_item(LostItem(lItem[0],lItem[1],lItem[2],lItem[3]))
+            self.add_item(LostItem(int(lItem[0]),lItem[1],lItem[2],lItem[3]))
             

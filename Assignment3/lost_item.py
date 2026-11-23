@@ -31,11 +31,12 @@ class LostItem:
         return self.__status
     
     def __str__(self):
-        return "ID is: " + self.__ID + "\nName is: " + self.__name +"\nCategory is: " +self.__category+"\nLocation is: "+self.__location + "\nStatus is: " + self.__status
+        return "ID is: " + str(self.__ID) + "\nName is: " + self.__name +"\nCategory is: " +self.__category+"\nLocation is: "+self.__location + "\nStatus is: " + self.__status
     
     def __eq__(self,other):
         if type(self) == type(other):
             return self.__ID == other.__ID
+        else: return NotImplemented
     
     def mark_claimed(self):
         if self.__status == "Lost":

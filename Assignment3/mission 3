@@ -1,0 +1,9 @@
+Recommendation 1 : Fix LostItem.__str__ and LostItem.__eq__
+AI review: In lost_item.py, __str__ tries to add self.__ID directly to a string, which crashes with a TypeError when ID is an integer like 101. 
+Also, __eq__ returns None instead of False if other isn't a LostItem.
+My call:(accept)Both are real bugs in special methods required for LostItem, and fixing them keeps the code straightforward and within what we've covered in class.
+
+Recommendation 2:
+Make ID int in load_item and return True in add_item (accept)
+AI review: load_items passed the ID as a string, so ID<=0 in LostItem would crash. add_item() doesn't return True when an item is actually added in add_item()
+My call: Accept. load_items() not taking id as an int creates lots of problems, adding return True in add_item() makes it more use friendly
