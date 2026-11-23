@@ -15,18 +15,59 @@ def main():
         """)
         userInput = int(input("Enter your choice: "))
         if userInput == 1:
-            pass
+            item_id = int(input("Enter item ID: "))
+            if item_id is None:
+                continue
+            name = input("Enter item name: ")
+            category = input("Enter item category: ")
+            location = input("Enter location found: ")
+            try:
+                item = LostItem(item_id, name, category, location)
+            except ValueError:
+                print("Could not register item")
+                continue  # Why is there a continue here
+            if System.add_item(item):
+                print("Item registered successfully! ")
+            else:
+                print(f"Error: Item ID {item_id} already exists!")
+
         elif userInput == 2:
-            pass
+            item_ID = int(input("Enter item ID: "))
+            item = System.search_item(item_ID)
+            if item:
+                print("Item Found!")
+                print(item)
+            else:
+                print("No item found with that ID.")
         elif userInput == 3:
-            pass
+            item_id = int(input("Enter item ID to claim: "))
+            if System.search_item(item_id) is None:
+                print("No item found with that ID.")
+            elif System.claim_item(item_id):
+                print(f"Item {item_id} successfully marked as Claimed!")
+            else:
+                print("Item is already claimed. No changes made")
+
         elif userInput == 4:
-            pass
+            System.display_items()
+
         elif userInput == 5:
-            pass
+            file = input("Enter file to save to: ")
+            records = System.save_items(file)
+            if records:
+                print(f"{records} records saved successfully!")
+            else: print("Error has occured.")
+
         elif userInput == 6:
-            pass
+            file = input("Enter file to load : ")
+            records = System.load_items(file)
+            if records:
+                print(f"{records} records loaded successfully!")
+            else: print("Error: File not found! 0 records loaded.")
+            
+
         elif userInput == 7:
+            print("Thank you for using Campus Lost & Found! Goodbye!")
             break
     
 if __name__ == "__main__":

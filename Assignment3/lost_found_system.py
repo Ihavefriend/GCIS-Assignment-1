@@ -30,17 +30,19 @@ class LostFoundSystem:
             print(item)
 
     def save_items(self,filename):
+        saved_count = 0
         try:
             file = open(filename,"w")
             for item in self.LostItemList:
                 line = f"{item.get_ID()}, {item.get_name()}, {item.get_category()}, {item.get_location()}, {item.get_status()}\n"
                 file.write(line)
+                saved_count += 1
             
         except:
             print("Something has gone wrong...")
-            return False
+            return 0
         file.close()
-        return True
+        return saved_count
     
     def load_items(self,filename):
         try:
@@ -49,6 +51,7 @@ class LostFoundSystem:
         except:
             print("Something has gone wrong...")
             return 0
+        loaded_count = 0
         self.LostItemList = []
         for line in lines:
             stripped = line.strip()

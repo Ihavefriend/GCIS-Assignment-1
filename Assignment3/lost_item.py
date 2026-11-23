@@ -31,7 +31,7 @@ class LostItem:
         return self.__status
     
     def __str__(self):
-        return "ID is: " + str(self.__ID) + "\nName is: " + self.__name +"\nCategory is: " +self.__category+"\nLocation is: "+self.__location + "\nStatus is: " + self.__status
+        return f"{self.__ID} | {self.__name} | {self.__category} | {self.__location} | {self.__status}"
     
     def __eq__(self,other):
         if type(self) == type(other):
