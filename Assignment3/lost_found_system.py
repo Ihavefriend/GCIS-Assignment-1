@@ -30,19 +30,48 @@ class LostFoundSystem:
             print(item)
 
     def save_items(self,filename):
-        file = open(filename,"w")
-        for item in self.LostItemList:
-            file.write(str(item),"\n")
+        try:
+            file = open(filename,"w")
+            for item in self.LostItemList:
+                line = f"{item.get_ID()}, {item.get_name()}, {item.get_category()}, {item.get_location()}, {item.get_status()}\n"
+                file.write(line)
+            
+        except:
+            print("Something has gone wrong...")
+            return False
         file.close()
+        return True
     
     def load_items(self,filename):
         try:
             file = open(filename)
+            lines = file.readlines()
         except:
             print("Something has gone wrong...")
             return 0
         self.LostItemList = []
-        for strItem in file.readlines(): # {self.__ID}, {self.__name}, {self.__category},{self.__location},{self.__status}
-            lItem = strItem.strip().split(",")
-            self.add_item(LostItem(int(lItem[0]),lItem[1],lItem[2],lItem[3]))
+        for line in lines:
+            stripped = line.strip()
+            if not stripped: # not stripped returns true if value doesnt exist
+                continue
+            tempItem = [data.strip() for data in stripped.split(",")]
+            id_str, name, category, location, status = tempItem
+            item_ID = int(id_str)
+            if item_ID <= 0 or not name or not category or not location:
+                continue
+
+            if status not in ("Lost", "Claimed"):
+                continue
+            try:
+                item = LostItem(item_ID, name, category, location)
+            except ValueError:
+                continue
+            if status == "Claimed":
+                item.mark_claimed()
+
+            if self.add_item(item):
+                loaded_count += 1
+        file.close()
+        return loaded_count
+        
             
